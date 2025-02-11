@@ -18,7 +18,7 @@ const SingleBook = () => {
         if (id === 'new') return
         const response = await api.get(`/api/books/${id}/`)
         const data = response.data
-        console.log('data', data);
+        console.log('data GET single', data);
         setBook(data)
       } catch (error) {
         setFetchError(error.message)
@@ -29,34 +29,35 @@ const SingleBook = () => {
 
 
   const createBook = async() => {
-    fetch(`/api/books/`,{
-      method: "POST",
-      "headers": {
-        'Content-Type': 'application/json'
-      },
-     body: JSON.stringify(book)
-   })
+   try {
+      const response = await api.post(`/api/books/`,{content: book.content  })
+      console.log('response POST', response);
+      navigate('/book')
+   } catch (error) {
+      setFetchError(error.message)
+   }
    }
   
    const updataBook = async() => {
-    fetch(`/api/books/${id}/`,{
-      method: "PUT",
-      "headers": {
-        'Content-Type': 'application/json'
-      },
-     body: JSON.stringify(book)
+   try {
+   const response = await api.put(`/api/books/${id}/`,{
+    content: book.content  
    })
+   console.log('response PUT', response.data);
+   } catch (error) {
+    setFetchError(error.message)
+   }
    }
   
   
   
   const deleteBook = async() => {
-     fetch(`/api/books/${id}/`,{
-      method: "DELETE",
-      "headers": {
-        'Content-Type': 'application/json'
-      },
-    })
+    try {
+     const response = await api.delete(`/api/books/${id}/`)
+     console.log("DELETE book", response);
+    } catch (error) {
+      setFetchError(error.message)
+    }
     navigate('/book')
     }
   

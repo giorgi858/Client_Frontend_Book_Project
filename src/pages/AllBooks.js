@@ -12,9 +12,8 @@ const AllBooks = () => {
     useEffect(() => {
       const getBookNotes  =  async() => {
         try {
-          const response = await fetch('/api/books/')
-          console.log('response', response);
-          const data = await response.json()
+          const response = await api.get('/api/books/')
+          const data = response.data
           console.log('data', data);
           setBooks(data)
         } catch (error) {
