@@ -12,7 +12,9 @@ const Navbar = () => {
       </ul>
       <ul>
         <li><Link className='navList' to='/login'>Login</Link></li>
-        <li><Link className='navList' to='/Register'>Register</Link></li>
+        <li><Link className='navList' to='/register'>Register</Link></li>
+        <li><Link className='navList' to='/logout'>Logout</Link></li>
+
         
       </ul>
     </nav>

@@ -63,7 +63,7 @@ const SingleBook = () => {
   
     let handleSubmit = () => {
       console.log('book', book);
-      if (id !== 'new' && book.content == '') {
+      if (id !== 'new' && book.content === '') {
           deleteBook()
       } else if (id !== 'new') {
           updataBook()
@@ -71,6 +71,7 @@ const SingleBook = () => {
           createBook()
       }
       navigate('/book')
+
   }
 
   const handleChange = (value) => {
@@ -85,9 +86,10 @@ const SingleBook = () => {
     <div className='book'>
 
 <div className='book-header'>
-    {book === null ? <Link to='/book'>Go Home</Link>:
+    {book === null ? <a href='/book'>Go Home</a>:
     <h3>
-    <ArrowLeft onClick={handleSubmit}/>
+       <ArrowLeft onClick={handleSubmit} />
+
   </h3>}
     {id !== 'new' ? (
       <button onClick={deleteBook}>Delete</button>
