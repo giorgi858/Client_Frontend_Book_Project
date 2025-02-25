@@ -3,10 +3,10 @@ import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 import { useEffect, useState } from "react";
-
+import useIsAuthorized from "../hooks/useIsAuthorized";
 
 const ProtectedRoute = ({ children }) => {
-    const [isAuthorized, setIsAuthorized] = useState(null)
+    const {isAuthorized, setIsAuthorized } =useIsAuthorized()
 
     useEffect(() => {
         auth().catch(() => setIsAuthorized(false))

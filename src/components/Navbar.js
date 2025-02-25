@@ -1,7 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import useIsAuthorized from '../hooks/useIsAuthorized'
 
 const Navbar = () => {
+  const {isAuthorized } =useIsAuthorized()
+
+  // console.log('isAuthorized', isAuthorized);
+
   return (
     <nav>
       <ul>
@@ -11,11 +16,13 @@ const Navbar = () => {
 
       </ul>
       <ul>
-        <li><Link className='navList' to='/login'>Login</Link></li>
-        <li><Link className='navList' to='/register'>Register</Link></li>
-        <li><Link className='navList' to='/logout'>Logout</Link></li>
-
-        
+        {!isAuthorized ? 
+        <>
+          <li><Link to='/login' className='navList'>Login</Link></li>
+          <li><Link to='/register' className='navList'>Register</Link></li>
+        </> : 
+          <li><Link to='/logout' className='navList'>Logout</Link></li>
+        }
       </ul>
     </nav>
   )
