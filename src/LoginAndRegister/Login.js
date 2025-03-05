@@ -1,16 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import api from '../api';
 import { Link } from 'react-router-dom';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 import LoadingIndicator from '../components/LoadingIndicator';
-// import useAuth from '../hooks/useAuth';
 const LOGIN_URL = '/api/token/';
 
 const Login = () => {
     const navigate = useNavigate()
-    const location = useLocation()
-    // const { setAuth } = useAuth()
     const userRef = useRef();   
     const errRef = useRef();
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import api from '../api'
 
 

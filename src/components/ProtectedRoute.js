@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useIsAuthorized from "../hooks/useIsAuthorized";
 
 const ProtectedRoute = ({ children }) => {
