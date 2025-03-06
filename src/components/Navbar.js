@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import useIsAuthorized from '../hooks/useIsAuthorized'
 
 const Navbar = () => {
+
   const {isAuthorized } =useIsAuthorized()
 
-  // console.log('isAuthorized', isAuthorized);
+  console.log('isAuthorized', isAuthorized);
 
   return (
     <nav>
@@ -16,13 +17,14 @@ const Navbar = () => {
 
       </ul>
       <ul>
-        {!isAuthorized ? 
+        {!isAuthorized ?
         <>
           <li><Link to='/login' className='navList'>Login</Link></li>
           <li><Link to='/register' className='navList'>Register</Link></li>
-        </> : 
+        </>
+        :
           <li><Link to='/logout' className='navList'>Logout</Link></li>
-        }
+}
       </ul>
     </nav>
   )

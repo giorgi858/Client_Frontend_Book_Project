@@ -1,12 +1,12 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useIsAuthorized from "../hooks/useIsAuthorized";
 
 const ProtectedRoute = ({ children }) => {
-    const {isAuthorized, setIsAuthorized } =useIsAuthorized()
+    const {isAuthorized, setIsAuthorized} =useIsAuthorized()
 
     useEffect(() => {
         auth().catch(() => setIsAuthorized(false))
@@ -47,10 +47,10 @@ const ProtectedRoute = ({ children }) => {
             setIsAuthorized(true)
         }
     }
-    if (isAuthorized === null) {
-        return <div>Loading ...</div>
-    }
-  return  isAuthorized ? children : <Navigate to='/login'/>
+  return  isAuthorized && children ? children : <div className="div-login-in-protectedRoute">
+    <h1>hello everyone</h1>
+    <Link to='/login'>START LOGIN</Link>    
+  </div>
 }
 
 export default ProtectedRoute
